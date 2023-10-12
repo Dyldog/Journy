@@ -14,6 +14,14 @@
 		FCB668662AD6398B0091B59B /* JournyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB668652AD6398B0091B59B /* JournyTests.swift */; };
 		FCB668702AD6398B0091B59B /* JournyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB6686F2AD6398B0091B59B /* JournyUITests.swift */; };
 		FCB668722AD6398B0091B59B /* JournyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB668712AD6398B0091B59B /* JournyUITestsLaunchTests.swift */; };
+		FCB668812AD63DED0091B59B /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB668802AD63DED0091B59B /* NotesView.swift */; };
+		FCB668842AD63E750091B59B /* DylKit in Frameworks */ = {isa = PBXBuildFile; productRef = FCB668832AD63E750091B59B /* DylKit */; };
+		FCB668862AD644560091B59B /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB668852AD644560091B59B /* NoteDetailView.swift */; };
+		FCC7AECC2AD790EA005B7B12 /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FCC7AECB2AD790EA005B7B12 /* HighlightedTextEditor */; };
+		FCC7AED12AD79C41005B7B12 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC7AED02AD79C41005B7B12 /* Style.swift */; };
+		FCC7AED22AD79D51005B7B12 /* YoungSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCC7AECE2AD79C05005B7B12 /* YoungSerif-Regular.ttf */; };
+		FCC7AED42AD7AD9C005B7B12 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC7AED32AD7AD9C005B7B12 /* TextView.swift */; };
+		FCC7AED62AD7AE1D005B7B12 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC7AED52AD7AE1D005B7B12 /* Font+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +53,15 @@
 		FCB6686B2AD6398B0091B59B /* JournyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JournyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB6686F2AD6398B0091B59B /* JournyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournyUITests.swift; sourceTree = "<group>"; };
 		FCB668712AD6398B0091B59B /* JournyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FCB6687F2AD63C340091B59B /* DylKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DylKit; path = ../DylKit; sourceTree = "<group>"; };
+		FCB668802AD63DED0091B59B /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		FCB668852AD644560091B59B /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
+		FCC7AECA2AD790DA005B7B12 /* HighlightedTextEditor */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = HighlightedTextEditor; path = ../HighlightedTextEditor; sourceTree = "<group>"; };
+		FCC7AECE2AD79C05005B7B12 /* YoungSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YoungSerif-Regular.ttf"; sourceTree = "<group>"; };
+		FCC7AECF2AD79C14005B7B12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FCC7AED02AD79C41005B7B12 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		FCC7AED32AD7AD9C005B7B12 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		FCC7AED52AD7AE1D005B7B12 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCC7AECC2AD790EA005B7B12 /* HighlightedTextEditor in Frameworks */,
+				FCB668842AD63E750091B59B /* DylKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,10 +94,12 @@
 		FCB668472AD639850091B59B = {
 			isa = PBXGroup;
 			children = (
+				FCB6687E2AD63C340091B59B /* Packages */,
 				FCB668522AD639850091B59B /* Journy */,
 				FCB668642AD6398B0091B59B /* JournyTests */,
 				FCB6686E2AD6398B0091B59B /* JournyUITests */,
 				FCB668512AD639850091B59B /* Products */,
+				FCB668822AD63E750091B59B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,8 +116,15 @@
 		FCB668522AD639850091B59B /* Journy */ = {
 			isa = PBXGroup;
 			children = (
+				FCC7AECF2AD79C14005B7B12 /* Info.plist */,
 				FCB668532AD639850091B59B /* JournyApp.swift */,
 				FCB668552AD639850091B59B /* ContentView.swift */,
+				FCB668802AD63DED0091B59B /* NotesView.swift */,
+				FCB668852AD644560091B59B /* NoteDetailView.swift */,
+				FCC7AED02AD79C41005B7B12 /* Style.swift */,
+				FCC7AED32AD7AD9C005B7B12 /* TextView.swift */,
+				FCC7AED52AD7AE1D005B7B12 /* Font+Extensions.swift */,
+				FCC7AECD2AD79BF3005B7B12 /* Resources */,
 				FCB668572AD6398A0091B59B /* Assets.xcassets */,
 				FCB668592AD6398A0091B59B /* Journy.entitlements */,
 				FCB6685A2AD6398A0091B59B /* Preview Content */,
@@ -129,6 +157,30 @@
 			path = JournyUITests;
 			sourceTree = "<group>";
 		};
+		FCB6687E2AD63C340091B59B /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				FCB6687F2AD63C340091B59B /* DylKit */,
+				FCC7AECA2AD790DA005B7B12 /* HighlightedTextEditor */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		FCB668822AD63E750091B59B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FCC7AECD2AD79BF3005B7B12 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FCC7AECE2AD79C05005B7B12 /* YoungSerif-Regular.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +197,10 @@
 			dependencies = (
 			);
 			name = Journy;
+			packageProductDependencies = (
+				FCB668832AD63E750091B59B /* DylKit */,
+				FCC7AECB2AD790EA005B7B12 /* HighlightedTextEditor */,
+			);
 			productName = Journy;
 			productReference = FCB668502AD639850091B59B /* Journy.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +273,8 @@
 				Base,
 			);
 			mainGroup = FCB668472AD639850091B59B;
+			packageReferences = (
+			);
 			productRefGroup = FCB668512AD639850091B59B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -234,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCB6685C2AD6398A0091B59B /* Preview Assets.xcassets in Resources */,
+				FCC7AED22AD79D51005B7B12 /* YoungSerif-Regular.ttf in Resources */,
 				FCB668582AD6398A0091B59B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +320,11 @@
 			files = (
 				FCB668562AD639850091B59B /* ContentView.swift in Sources */,
 				FCB668542AD639850091B59B /* JournyApp.swift in Sources */,
+				FCC7AED62AD7AE1D005B7B12 /* Font+Extensions.swift in Sources */,
+				FCB668812AD63DED0091B59B /* NotesView.swift in Sources */,
+				FCC7AED42AD7AD9C005B7B12 /* TextView.swift in Sources */,
+				FCB668862AD644560091B59B /* NoteDetailView.swift in Sources */,
+				FCC7AED12AD79C41005B7B12 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +483,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Journy/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -429,7 +494,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.6;
@@ -457,6 +522,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Journy/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -467,7 +533,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.6;
@@ -612,6 +678,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FCB668832AD63E750091B59B /* DylKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DylKit;
+		};
+		FCC7AECB2AD790EA005B7B12 /* HighlightedTextEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HighlightedTextEditor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FCB668482AD639850091B59B /* Project object */;
 }
