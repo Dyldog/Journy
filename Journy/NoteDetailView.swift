@@ -189,6 +189,7 @@ struct NoteDetailView: View {
                         .brightness(-0.4)
                     TextView("Entry", text: entry.text)
                         .font(.youngSerif(size: 24))
+                        .placeholderFont(.youngSerif(size: 24))
                         .enableScrolling(false)
 //                        .if(index == 0 && entry.text.wrappedValue.isEmpty) {
 //                            $0.becomeFirstResponder()
