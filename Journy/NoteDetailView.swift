@@ -80,9 +80,9 @@ class NoteDetailViewModel: NSObject, ObservableObject {
         
         entries = journalRegex.matches(in: journalSection.contents).map {
             entry(from: $0, in: journalSection.contents)
-        }.sorted(by: { $0.time > $1.time })
+        }
         
-        rows = entries.enumerated().map { index, entry in
+        rows = entries.sorted(by: \.time, ascending: !noteIsForToday).enumerated().map { index, entry in
             .init(
                 time: timeFormatter.string(from: entry.time),
                 text: .init(get: { [weak self] in
@@ -199,8 +199,10 @@ struct NoteDetailView: View {
         }
         .listStyle(.plain)
         .resignKeyboardOnDragGesture()
-        .refreshable {
-            viewModel.newEntry()
+        .if(viewModel.noteIsForToday) {
+            $0.refreshable {
+                viewModel.newEntry()
+            }
         }
     }
     
