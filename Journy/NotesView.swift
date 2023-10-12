@@ -34,15 +34,15 @@ struct NotesView: View {
     @State var showImporter: Bool = false
     
     var body: some View {
-//        ScrollView(.horizontal) {
-//            LazyHStack {
-//                ForEach(viewModel.noteFiles, id: \.self) { note in
-        NoteDetailView(note: viewModel.noteFiles[0])
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 0) {
+                ForEach(viewModel.noteFiles, id: \.self) { note in
+                    NoteDetailView(note: note)
                         .frame(width: UIScreen.main.bounds.width)
-//                }
-//            }
-//        }
-//        .paged()
+                }
+            }
+        }
+        .paged()
         .if(!viewModel.hasSelectedDirectory) {
             $0.fileImporter(isPresented: $showImporter, allowedContentTypes: [.folder]) { result in
                 showImporter = false

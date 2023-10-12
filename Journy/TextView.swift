@@ -48,6 +48,7 @@ struct TextView: View {
     private var isScrollingEnabled: Bool = false
     private var enablesReturnKeyAutomatically: Bool?
     private var autoDetectionTypes: UIDataDetectorTypes = []
+    private var shouldBecomeFirstResponder: Bool = false
 
     private var internalText: Binding<String> {
         Binding<String>(get: { self.text }) {
@@ -87,6 +88,7 @@ struct TextView: View {
                         isScrollingEnabled: isScrollingEnabled,
                         enablesReturnKeyAutomatically: enablesReturnKeyAutomatically,
                         autoDetectionTypes: autoDetectionTypes,
+                        shouldBecomeFirstResponder: shouldBecomeFirstResponder,
                         calculatedHeight: $calculatedHeight,
                         shouldEditInRange: shouldEditInRange,
                         onEditingChanged: onEditingChanged,
@@ -218,6 +220,12 @@ extension TextView {
         }
         return view
     }
+    
+    func becomeFirstResponder() -> TextView {
+        var view = self
+        view.shouldBecomeFirstResponder = true
+        return view
+    }
 
 }
 
@@ -244,6 +252,7 @@ private struct SwiftUITextView: UIViewRepresentable {
     private let isScrollingEnabled: Bool
     private let enablesReturnKeyAutomatically: Bool?
     private var autoDetectionTypes: UIDataDetectorTypes = []
+    private let shouldBecomeFirstResponder: Bool
 
     init(_ text: Binding<String>,
          foregroundColor: UIColor,
@@ -260,6 +269,7 @@ private struct SwiftUITextView: UIViewRepresentable {
          isScrollingEnabled: Bool,
          enablesReturnKeyAutomatically: Bool?,
          autoDetectionTypes: UIDataDetectorTypes,
+         shouldBecomeFirstResponder: Bool,
          calculatedHeight: Binding<CGFloat>,
          shouldEditInRange: ((Range<String.Index>, String) -> Bool)?,
          onEditingChanged: (() -> Void)?,
@@ -285,6 +295,7 @@ private struct SwiftUITextView: UIViewRepresentable {
         self.isScrollingEnabled = isScrollingEnabled
         self.enablesReturnKeyAutomatically = enablesReturnKeyAutomatically
         self.autoDetectionTypes = autoDetectionTypes
+        self.shouldBecomeFirstResponder = shouldBecomeFirstResponder
 
         makeCoordinator()
     }
@@ -297,6 +308,11 @@ private struct SwiftUITextView: UIViewRepresentable {
         view.backgroundColor = UIColor.clear
         view.adjustsFontForContentSizeCategory = true
         view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        
+        if shouldBecomeFirstResponder {
+            view.becomeFirstResponder()
+        }
+        
         return view
     }
 

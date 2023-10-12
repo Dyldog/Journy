@@ -42,6 +42,11 @@ class NoteDetailViewModel: NSObject, ObservableObject {
         options: .anchorsMatchLines
     )
         
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
     
     let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -53,6 +58,10 @@ class NoteDetailViewModel: NSObject, ObservableObject {
         self.note = note
         super.init()
         load()
+    }
+    
+    var noteIsForToday: Bool {
+        return dateFormatter.string(from: .now) == title
     }
     
     func onAppear() {
@@ -101,8 +110,8 @@ class NoteDetailViewModel: NSObject, ObservableObject {
         )
     }
     
-    func addTapped() {
-        entries.append(.init(time: .now, text: ""))
+    func newEntry(content: String = "") {
+        entries.append(.init(time: .now, text: content))
         saveNoteFromEntries(reload: true)
     }
     
@@ -111,7 +120,7 @@ class NoteDetailViewModel: NSObject, ObservableObject {
             guard let journalSectionIndex = journalSectionIndex else { return }
             note = note.replaceSectionContents(
                 at: journalSectionIndex,
-                with: entries.map {
+                with: entries.sorted(by: { $0.time < $1.time }).map {
                     "- **\(timeFormatter.string(from: $0.time))**: \($0.text)"
                 }
                 .joined(separator: "\n")
@@ -121,6 +130,11 @@ class NoteDetailViewModel: NSObject, ObservableObject {
         reloadNoteFromEntries()
         database.writeNote(note.contents, in: note.path)
         load(reloadNote: reload)
+    }
+    
+    func handleURLScheme(url: URL) {
+        guard let content = url.host else { return }
+        newEntry(content: content)
     }
 }
 
@@ -158,6 +172,10 @@ struct NoteDetailView: View {
             if newPhase == .active {
                 viewModel.onAppear()
             }
+        }.if(viewModel.noteIsForToday) {
+            $0.onOpenURL { url in
+                viewModel.handleURLScheme(url: url)
+            }
         }
     }
     
@@ -172,25 +190,16 @@ struct NoteDetailView: View {
                     TextView("Entry", text: entry.text)
                         .font(.youngSerif(size: 24))
                         .enableScrolling(false)
-//                    HighlightedTextEditor(text: entry.text, highlightRules: .markdown)
-//                        .introspect(callback: { editor in
-//                            editor.textView.isScrollEnabled = false
-//                            editor.textView.textContainerInset = .zero
-//                            editor.textView.textContainer.lineFragmentPadding = 0
-//                            editor.textView.font = .youngSerif(size: 24)
-//
-//                            if index == 0, entry.text.wrappedValue.isEmpty {
-//                                editor.textView.becomeFirstResponder()
-//                            }
-//                        })
-//                        .frame(maxWidth: UIScreen.main.bounds.width)
-                        
+//                        .if(index == 0 && entry.text.wrappedValue.isEmpty) {
+//                            $0.becomeFirstResponder()
+//                        }
                 }
             }
         }
         .listStyle(.plain)
+        .resignKeyboardOnDragGesture()
         .refreshable {
-            viewModel.addTapped()
+            viewModel.newEntry()
         }
     }
     
@@ -198,7 +207,7 @@ struct NoteDetailView: View {
         VStack {
             Spacer()
             Button {
-                viewModel.addTapped()
+                viewModel.newEntry()
             } label: {
                 Text("No entries.\nWhy not add one?")
                     .font(.youngSerif(size: 18))
