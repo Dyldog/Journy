@@ -82,7 +82,7 @@ class NoteDetailViewModel: NSObject, ObservableObject {
             entry(from: $0, in: journalSection.contents)
         }
         
-        rows = entries.sorted(by: \.time, ascending: !noteIsForToday).enumerated().map { index, entry in
+        rows = entries.enumerated().sorted(by: \.element.time, ascending: !noteIsForToday).map { (index, entry) in
             .init(
                 time: timeFormatter.string(from: entry.time),
                 text: .init(get: { [weak self] in
